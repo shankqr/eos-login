@@ -1,9 +1,12 @@
-import { Api, Rpc, SignatureProvider } from 'eosjs';
+import { Api, JsonRpc } from 'eosjs';
+import JsSignatureProvider from 'eosjs/dist/eosjs-jssig';
 
-async function takeAction(action, dataValue) {
+async function invokeAction(action, dataValue) {
+  const rpc = new JsonRpc(process.env.VUE_APP_NODE_ENDPOINT);
+
   const privateKey = localStorage.getItem('private_key');
-  const rpc = new Rpc.JsonRpc(process.env.VUE_APP_NODE_ENDPOINT);
-  const signatureProvider = new SignatureProvider([privateKey]);
+  const signatureProvider = new JsSignatureProvider([privateKey]);
+
   const api = new Api({
     rpc,
     signatureProvider,
@@ -44,7 +47,7 @@ class EosService {
     return new Promise((resolve, reject) => {
       localStorage.setItem('name_account', acc);
       localStorage.setItem('private_key', key);
-      takeAction('login', { user: acc })
+      invokeAction('login', { user: acc })
         .then(() => {
           resolve();
         })
