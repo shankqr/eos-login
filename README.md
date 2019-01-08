@@ -1,6 +1,8 @@
 # eos-login
 
-These are the source files for the front-end part of my article on Medium: How to develop the front-end for EOS smart contract's.
+These are the source files for the front-end part of my article on HackerNoon: How to build a simple Front End for your EOS smart contract.
+
+Link to my article: https://hackernoon.com/how-to-build-a-simple-front-end-for-your-eos-smart-contract-3f9289e8146c
 
 ## Project setup
 
